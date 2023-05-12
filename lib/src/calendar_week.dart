@@ -335,6 +335,9 @@ class _CalendarWeekState extends State<CalendarWeek> {
       color: widget.backgroundColor,
       width: double.infinity,
       height: widget.height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: ScrollConfiguration(
         behavior: CustomScrollBehavior(),
         child: PageView.builder(
@@ -353,12 +356,14 @@ class _CalendarWeekState extends State<CalendarWeek> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           // Month
+          /*
           (widget.monthDisplay &&
                   widget.monthViewBuilder != null &&
                   weeks.days.firstWhere((el) => el != null) != null)
               ? widget
                   .monthViewBuilder!(weeks.days.firstWhere((el) => el != null)!)
               : _monthItem(weeks.month),
+              */
 
           /// Day of week layout
           _dayOfWeek(weeks.dayOfWeek),

@@ -111,7 +111,10 @@ class __DateItemState extends State<DateItem> {
             child: Container(
                 decoration: BoxDecoration(
                   color: _defaultBackgroundColor!,
-                  shape: widget.dayShapeBorder!,
+                  //shape: widget.dayShapeBorder!,
+                  borderRadius: BorderRadius.circular(
+                    100,
+                  ),
                 ),
                 padding: EdgeInsets.all(5),
                 child: Stack(
