@@ -102,39 +102,39 @@ class __DateItemState extends State<DateItem> {
   /// Body layout
   Widget _body() => Container(
         width: 50,
-        height: 50,
+        height: 35,
         alignment: FractionalOffset.center,
         child: GestureDetector(
           onLongPress: _onLongPressed,
           child: GestureDetector(
             onTap: _onPressed,
             child: Container(
-                decoration: BoxDecoration(
+              height: 30,
+              decoration: BoxDecoration(
                   color: _defaultBackgroundColor!,
+                  borderRadius: BorderRadius.circular(100)
                   //shape: widget.dayShapeBorder!,
-                  borderRadius: BorderRadius.circular(
-                    100,
                   ),
-                ),
-                padding: EdgeInsets.all(5),
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          '${widget.date!.day}',
-                          style: _defaultTextStyle!,
-                        ),
+              padding: EdgeInsets.all(5),
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        '${widget.date!.day}',
+                        style: _defaultTextStyle!,
                       ),
                     ),
-                    _decoration()
-                  ],
-                )),
+                  ),
+                  _decoration()
+                ],
+              ),
+            ),
           ),
         ),
       );

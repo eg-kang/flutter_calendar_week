@@ -332,28 +332,29 @@ class _CalendarWeekState extends State<CalendarWeek> {
 
   /// Body layout
   Widget _body() => Container(
-      color: widget.backgroundColor,
-      width: double.infinity,
-      height: widget.height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: ScrollConfiguration(
-        behavior: CustomScrollBehavior(),
-        child: PageView.builder(
-          controller: _pageController,
-          itemCount: controller._weeks.length,
-          onPageChanged: (currentPage) {
-            widget.controller!._currentWeekIndex = currentPage;
-            widget.onWeekChanged();
-          },
-          itemBuilder: (_, i) => _week(controller._weeks[i]),
+        width: double.infinity,
+        height: widget.height,
+        decoration: BoxDecoration(
+          color: widget.backgroundColor,
+          borderRadius: BorderRadius.circular(16),
         ),
-      ));
+        child: ScrollConfiguration(
+          behavior: CustomScrollBehavior(),
+          child: PageView.builder(
+            controller: _pageController,
+            itemCount: controller._weeks.length,
+            onPageChanged: (currentPage) {
+              widget.controller!._currentWeekIndex = currentPage;
+              widget.onWeekChanged();
+            },
+            itemBuilder: (_, i) => _week(controller._weeks[i]),
+          ),
+        ),
+      );
 
   /// Layout of week
   Widget _week(WeekItem weeks) => Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           // Month
           /*
@@ -366,10 +367,12 @@ class _CalendarWeekState extends State<CalendarWeek> {
               */
 
           /// Day of week layout
+          Expanded(child: Container()),
           _dayOfWeek(weeks.dayOfWeek),
 
           /// Date layout
-          _dates(weeks.days)
+          _dates(weeks.days),
+          Expanded(child: Container()),
         ],
       );
 
@@ -389,30 +392,33 @@ class _CalendarWeekState extends State<CalendarWeek> {
   /// Day of week layout
   Widget _dayOfWeek(List<String> dayOfWeek) => Container(
         margin: widget.marginDayOfWeek,
+        height: 30,
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: dayOfWeek.map(_dayOfWeekItem).toList()),
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: dayOfWeek.map(_dayOfWeekItem).toList(),
+        ),
       );
 
   /// Day of week item layout
   Widget _dayOfWeekItem(String title) => Container(
-      alignment: Alignment.center,
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Container(
-          width: 50,
-          child: Text(
-            title,
-            style: widget.weekendsIndexes
-                        .indexOf(widget.daysOfWeek.indexOf(title)) !=
-                    -1
-                ? widget.weekendsStyle
-                : widget.dayOfWeekStyle,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
+        alignment: Alignment.center,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Container(
+            width: 50,
+            child: Text(
+              title,
+              style: widget.weekendsIndexes
+                          .indexOf(widget.daysOfWeek.indexOf(title)) !=
+                      -1
+                  ? widget.weekendsStyle
+                  : widget.dayOfWeekStyle,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
-      ));
+      );
 
   /// Date layout
   Widget _dates(List<DateTime?> dates) => Row(
