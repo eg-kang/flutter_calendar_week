@@ -444,7 +444,7 @@ class _CalendarWeekState extends State<CalendarWeek> {
         }
         return FractionalOffset.center;
       }(),
-      dayShapeBorder: widget.dayShapeBorder,
+      //dayShapeBorder: widget.dayShapeBorder,
       onDatePressed: (datePressed) {
         controller._selectedDate = datePressed;
         widget.onDatePressed(datePressed);
