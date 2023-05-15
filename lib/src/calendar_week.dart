@@ -56,7 +56,7 @@ Example:
 */
 
   /// Today date time
-  DateTime _today = DateTime.now();
+  DateTime today = DateTime.now();
 
   /// Store hast attach to a client state
   bool _hasClient = false;
@@ -68,7 +68,7 @@ Example:
   DateTime? _selectedDate;
 
   /// Get [_selectedDate] selected;
-  DateTime get selectedDate => _selectedDate ?? _today;
+  DateTime get selectedDate => _selectedDate ?? today;
 
   /// get [_weeks]
   List<DateTime?> get rangeWeekDate => _weeks.isNotEmpty
@@ -312,7 +312,7 @@ class _CalendarWeekState extends State<CalendarWeek> {
       /// [_currentWeekIndex] is index of week in [List] weeks contain today
 
       .._currentWeekIndex =
-          findCurrentWeekIndexByDate(controller._today, controller._weeks)
+          findCurrentWeekIndexByDate(controller.today, controller._weeks)
       .._widgetJumpToDate = _jumToDateHandler
       .._hasClient = true;
 
@@ -427,9 +427,9 @@ class _CalendarWeekState extends State<CalendarWeek> {
 
   /// Date item layout
   Widget _dateItem(DateTime? date) => DateItem(
-      today: controller._today,
+      today: controller.today,
       date: date,
-      dateStyle: compareDate(date, controller._today)
+      dateStyle: compareDate(date, controller.today)
           ? widget.todayDateStyle
           : date != null && (date.weekday == 6 || date.weekday == 7)
               ? widget.weekendsStyle
