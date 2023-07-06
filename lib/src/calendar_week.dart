@@ -334,6 +334,7 @@ class _CalendarWeekState extends State<CalendarWeek> {
   Widget _body() => Container(
         width: double.infinity,
         height: widget.height,
+        margin: EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
           color: widget.backgroundColor,
           borderRadius: BorderRadius.circular(16),
